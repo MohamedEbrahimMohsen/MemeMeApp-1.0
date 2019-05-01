@@ -11,10 +11,6 @@ import UIKit
 class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
 
     var currentTextFieldOriginYPlusHeight: CGFloat = 0.0
-    var memes:[Meme]!{
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.memes
-    }
     
     //MARK: Outlets
     @IBOutlet weak var originalImage: UIImageView!
@@ -77,9 +73,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     //MARK: Internal Functions
     func save() {
         // Create the meme
-        let meme = Meme(name: "", topText: topCommentTextField.text, bottomText: bottomCommentTextField.text, originalImage: originalImage.image, memedImage: generateMemedImage())
-        
-        (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
+        let meme = Meme(topText: topCommentTextField.text, bottomText: bottomCommentTextField.text, originalImage: originalImage.image, memedImage: generateMemedImage())
     }
     
     func generateMemedImage() -> UIImage {
