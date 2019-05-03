@@ -24,4 +24,12 @@ extension MemeViewController{
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
+    func presentImagePickerWith(sourceType: UIImagePickerController.SourceType) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+        imagePickerController.sourceType = sourceType
+        present(imagePickerController, animated: true, completion: nil)
+    }
 }
